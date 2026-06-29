@@ -85,6 +85,17 @@ Includes:
 - Extra tournament dashboard template: **$500**
 - Custom updates / integrations: **$75/hour**
 
+## Screenshot assets added
+
+The landing page now includes a prospect-facing screenshot gallery wired to these assets:
+
+- `assets/screenshots/01-home-social.svg`
+- `assets/screenshots/02-roster-cards.svg`
+- `assets/screenshots/03-player-profile.svg`
+- `assets/screenshots/04-gamechanger.svg`
+- `assets/screenshots/05-ncs-tracker.svg`
+- `assets/screenshots/06-scoreboard.svg`
+
 ## Suggested sales close
 
 > For less than the cost of one tournament weekend, your team can have a professional site with roster cards, player profiles, social media, GameChanger-ready stats, NCS tournament tracking, and sponsor/fundraising visibility.
@@ -93,7 +104,7 @@ Includes:
 
 - `index.html` — landing page
 - `styles.css` — responsive site styling
-- `assets/` — screenshot flyer images used by the landing page
+- `assets/screenshots/` — screenshot gallery assets used by the landing page
 
 ## Deployment options
 
