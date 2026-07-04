@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>NextGen Team Sites — Team Operations Story</title>
+  <meta name="description" content="A NextGen Team Sites story page explaining how youth sports teams operate today across scattered tools and how one branded landing page with an admin panel simplifies team operations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#071125;
+      --muted:#596579;
+      --blue:#0477bd;
+      --blue2:#0b8edf;
+      --yellow:#ffc323;
+      --yellow2:#ffdf62;
+      --card:#ffffffee;
+      --line:#c9d6e7;
+      --shadow:0 22px 55px rgba(28,48,79,.16);
+      --radius:32px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 88% 19%, rgba(255,208,53,.55), transparent 25rem),
+        radial-gradient(circle at 5% 10%, rgba(123,187,242,.48), transparent 24rem),
+        linear-gradient(135deg,#edf6ff 0%,#f7fbff 47%,#fff2c6 100%);
+      min-height:100vh;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(42,93,145,.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42,93,145,.09) 1px, transparent 1px);
+      background-size:54px 54px;
+      mask-image:linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
+    }
+    a{color:inherit}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(18px);
+      background:rgba(247,251,255,.86);
+      border-bottom:1px solid rgba(98,124,156,.23);
+    }
+    .nav{
+      min-height:86px;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      max-width:1180px;
+      margin:0 auto;
+    }
+    .brand{display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--ink)}
+    .mark{
+      width:72px;height:72px;border-radius:24px;
+      background:linear-gradient(145deg,#ffe57a,#ffb80e);
+      display:grid;place-items:center;
+      box-shadow:0 12px 35px rgba(255,183,21,.38), inset 0 1px 0 rgba(255,255,255,.55);
+      font-weight:950;
+      letter-spacing:-.12em;
+      transform:rotate(-3deg);
+      font-family:Anton, Impact, sans-serif;
+      font-size:28px;
+    }
+    .brand-copy strong{display:block;font-size:30px;letter-spacing:-.04em;line-height:.96}
+    .brand-copy span{display:block;margin-top:8px;color:#566275;font-weight:900;letter-spacing:.28em;font-size:18px}
+    .navlinks{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      text-decoration:none;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:13px;
+      color:#364154;
+      padding:12px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.58);
+      border:1px solid rgba(94,121,151,.18);
+    }
+    main{position:relative;z-index:1}
+    .wrap{max-width:1180px;margin:0 auto;padding:42px 22px 90px}
+    .hero{
+      padding-top:24px;
+      display:grid;
+      grid-template-columns:1.03fr .97fr;
+      gap:30px;
+      align-items:center;
+    }
+    .eyebrow{
+      color:var(--blue);
+      font-weight:950;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      font-size:18px;
+      margin:6px 0 24px;
+    }
+    h1,h2,h3,p{margin:0}
+    .display{
+      font-family:Anton, Impact, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:-.035em;
+      line-height:.88;
+      font-size:clamp(58px,9.7vw,118px);
+      max-width:900px;
+    }
+    .lead{
+      margin-top:30px;
+      color:var(--muted);
+      font-size:clamp(22px,3.2vw,34px);
+      line-height:1.34;
+      max-width:880px;
+      font-weight:650;
+    }
+    .buttons{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px}
+    .btn{
+      min-height:66px;border-radius:999px;
+      display:inline-grid;place-items:center;text-align:center;
+      padding:18px 24px;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      text-decoration:none;
+      color:var(--ink);
+      border:1px solid rgba(74,101,134,.2);
+      font-size:16px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .btn.primary{background:linear-gradient(180deg,#ffd84f,#ffc11c);border:0}
+    .btn.white{background:rgba(255,255,255,.74)}
+    .panel{
+      border:1px solid rgba(96,123,151,.24);
+      border-radius:42px;
+      background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.68));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .story-card{padding:34px;position:relative;min-height:520px}
+    .story-card h2{font-size:34px;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px}
+    .story-card p{color:var(--muted);font-size:22px;line-height:1.45;font-weight:650}
+    .scatter-map{display:grid;gap:14px;margin-top:28px}
+    .scatter-item{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:16px 18px;border-radius:22px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(96,123,151,.22);
+      box-shadow:0 12px 28px rgba(42,70,103,.08);
+      font-weight:950;
+    }
+    .scatter-item span:first-child{display:flex;align-items:center;gap:10px}
+    .scatter-item em{font-style:normal;color:#758094;font-size:14px;text-transform:uppercase;letter-spacing:.1em}
+    section{margin-top:62px}
+    .section-title{
+      font-family:Anton, Impact, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:-.025em;
+      line-height:.92;
+      font-size:clamp(48px,7vw,88px);
+      margin:10px 0 28px;
+    }
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .card{padding:32px}
+    .card h3{font-size:28px;line-height:1.06;letter-spacing:-.035em;margin-bottom:15px}
+    .card p,.card li{color:var(--muted);font-size:20px;line-height:1.42;font-weight:650}
+    .card ul{margin:18px 0 0;padding-left:20px;display:grid;gap:10px}
+    .number{
+      display:inline-grid;place-items:center;
+      width:54px;height:54px;border-radius:19px;
+      background:linear-gradient(145deg,#ffe16d,#ffc11c);
+      font-weight:1000;font-size:21px;
+      margin-bottom:22px;
+    }
+    .quote{
+      padding:38px;
+      background:linear-gradient(145deg,rgba(180,216,245,.72),rgba(255,255,255,.64));
+      border:1px solid rgba(74,139,188,.28);
+      border-radius:42px;
+      box-shadow:var(--shadow);
+    }
+    .quote p{
+      font-family:Anton, Impact, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:-.02em;
+      line-height:.96;
+      font-size:clamp(40px,6.2vw,80px);
+      color:var(--ink);
+    }
+    .quote small{display:block;margin-top:22px;color:#5f6978;font-weight:850;font-size:20px;line-height:1.4}
+    .flow{display:grid;gap:18px}
+    .flow-row{
+      display:grid;grid-template-columns:92px 1fr 190px;gap:22px;align-items:center;
+      padding:24px;border-radius:30px;background:rgba(255,255,255,.72);
+      border:1px solid rgba(96,123,151,.24);
+      box-shadow:0 14px 34px rgba(42,70,103,.09);
+    }
+    .flow-row strong{font-size:25px;letter-spacing:-.03em}
+    .flow-row p{color:var(--muted);font-size:19px;line-height:1.38;font-weight:650;margin-top:5px}
+    .pill{
+      justify-self:end;
+      border-radius:999px;
+      padding:12px 16px;
+      background:#071125;
+      color:#fff;
+      font-weight:950;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:12px;
+      text-align:center;
+    }
+    .admin-browser{
+      border:2px solid rgba(40,124,184,.36);
+      background:linear-gradient(145deg,rgba(191,222,245,.86),rgba(255,255,255,.56));
+      border-radius:34px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .browser-top{
+      height:78px;border-bottom:2px solid rgba(40,124,184,.22);
+      display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+      color:#667488;font-weight:950;letter-spacing:.2em;text-transform:uppercase;font-size:13px;
+    }
+    .dots{display:flex;gap:11px}.dots i{width:18px;height:18px;border-radius:50%;background:#c2cedb}
+    .browser-body{padding:30px;display:grid;gap:18px}
+    .admin-row{display:grid;grid-template-columns:1fr 112px;gap:12px;align-items:center;padding:18px;border-radius:22px;background:rgba(255,255,255,.68);border:1px solid rgba(96,123,151,.22)}
+    .admin-row strong{font-size:22px}.admin-row span{color:#657186;font-weight:750}.toggle{height:38px;border-radius:999px;background:linear-gradient(180deg,#ffd84f,#ffc11c);display:grid;place-items:center;font-weight:950;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+    .timeline{display:grid;gap:18px}
+    .timeline article{display:grid;grid-template-columns:72px 1fr;gap:20px;align-items:start;padding:26px;border-radius:30px;background:rgba(255,255,255,.74);border:1px solid rgba(96,123,151,.24);box-shadow:0 14px 34px rgba(42,70,103,.09)}
+    .timeline article span{width:58px;height:58px;border-radius:20px;background:linear-gradient(145deg,#ffe16d,#ffc11c);display:grid;place-items:center;font-weight:1000;font-size:22px}.timeline h3{font-size:28px;letter-spacing:-.04em;margin-bottom:8px}.timeline p{color:var(--muted);font-size:20px;line-height:1.42;font-weight:650}
+    .footer{padding:38px 22px 60px;text-align:center;color:#6a7484;font-weight:800}
+    @media (max-width:880px){
+      .hero,.grid-3,.grid-2{grid-template-columns:1fr}
+      .flow-row{grid-template-columns:72px 1fr}.pill{justify-self:start;grid-column:2}
+      .nav{align-items:flex-start}.navlinks{display:none}.story-card{min-height:auto}.display{font-size:clamp(56px,15vw,82px)}.lead{font-size:24px}.wrap{padding:34px 16px 70px}.mark{width:58px;height:58px;border-radius:20px;font-size:23px}.brand-copy strong{font-size:25px}.brand-copy span{font-size:14px}.card p,.card li,.timeline p{font-size:19px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="NextGen navigation">
+      <a class="brand" href="index.html">
+        <div class="mark">NG</div>
+        <div class="brand-copy">
+          <strong>NextGen</strong>
+          <span>TEAM SITES</span>
+        </div>
+      </a>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="bala-nextgen-roadmap.html">Bala</a>
+        <a href="#admin">Admin OS</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Team operations story</div>
+        <h1 class="display">Teams are running on scattered tools. NextGen makes one front door.</h1>
+        <p class="lead">Most select teams already use the same core platforms, but families still chase schedules, rosters, payments, updates, photos, sponsors, tournament info, and GameChanger links across too many places.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#story">Read the story</a>
+          <a class="btn white" href="#admin">View Admin OS</a>
+          <a class="btn white" href="#pitch">Use the pitch</a>
+        </div>
+      </div>
+      <aside class="panel story-card">
+        <div class="eyebrow">What teams use today</div>
+        <h2>The tools are not the problem. The scattered experience is.</h2>
+        <p>GameChanger, NCS, group texts, Facebook, Instagram, Venmo, Google Sheets, signup links, sponsor graphics, photo albums, and tournament screenshots all work — until families need one reliable place to understand what is happening.</p>
+        <div class="scatter-map" aria-label="Scattered team tools">
+          <div class="scatter-item"><span>🎥 GameChanger</span><em>games + stats</em></div>
+          <div class="scatter-item"><span>🏟️ NCS / Tourney links</span><em>events</em></div>
+          <div class="scatter-item"><span>💬 Group messages</span><em>updates</em></div>
+          <div class="scatter-item"><span>📸 Social + photos</span><em>media</em></div>
+          <div class="scatter-item"><span>💰 Sponsors + dues</span><em>money</em></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="story">
+      <div class="eyebrow">The real-world story</div>
+      <h2 class="section-title">A normal team week is way harder than it should be.</h2>
+      <div class="grid-3">
+        <article class="panel card">
+          <span class="number">1</span>
+          <h3>Parents need one answer.</h3>
+          <p>A parent is trying to figure out where the team plays, what time warmups start, which uniform to wear, who is bringing snacks, where the live stream is, and whether the schedule changed.</p>
+        </article>
+        <article class="panel card">
+          <span class="number">2</span>
+          <h3>Coaches are answering the same questions.</h3>
+          <p>The coach or team parent keeps repeating information across text threads, Facebook posts, screenshots, old tournament links, and last-minute reminders.</p>
+        </article>
+        <article class="panel card">
+          <span class="number">3</span>
+          <h3>Players lose visibility.</h3>
+          <p>The team has videos, stats, photos, awards, and stories happening every weekend, but they rarely get organized into a polished player profile or sponsor-ready team page.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="quote">
+        <p>NextGen does not replace the tools teams already use. It wraps them in one branded portal families can trust.</p>
+        <small>That is the product lane: one public landing page for the team, one admin panel for the operator, and integrations/imports that pull from the platforms teams already rely on.</small>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">The scattered stack</div>
+      <h2 class="section-title">Same platforms. Different chaos for every team.</h2>
+      <div class="flow">
+        <div class="flow-row">
+          <span class="number">GC</span>
+          <div><strong>GameChanger handles scoring, streaming, recaps, highlights, and stats.</strong><p>It is already the default game-day system. NextGen should link to it, import from it when allowed, and turn game activity into team stories.</p></div>
+          <span class="pill">Source layer</span>
+        </div>
+        <div class="flow-row">
+          <span class="number">NCS</span>
+          <div><strong>Tournament platforms hold brackets, locations, standings, and weekend context.</strong><p>Families still need a clean team view that explains where to be, who they play, and what changed.</p></div>
+          <span class="pill">Schedule layer</span>
+        </div>
+        <div class="flow-row">
+          <span class="number">TXT</span>
+          <div><strong>Group chats move fast but bury the important stuff.</strong><p>Urgent updates are useful, but the final answer should publish to one official team hub.</p></div>
+          <span class="pill">Comms layer</span>
+        </div>
+        <div class="flow-row">
+          <span class="number">SOC</span>
+          <div><strong>Social posts create energy but are not an operating system.</strong><p>Photos, reels, sponsor shoutouts, and player moments should feed the team brand, not disappear in a timeline.</p></div>
+          <span class="pill">Story layer</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="admin">
+      <div class="eyebrow">NextGen Admin OS</div>
+      <h2 class="section-title">One admin panel. One branded portal. Many sources.</h2>
+      <div class="grid-2">
+        <article class="panel card">
+          <h3>What the public sees</h3>
+          <ul>
+            <li>Branded team landing page with one clean link.</li>
+            <li>Roster cards and player profiles.</li>
+            <li>Schedule, tournament, field, and GameChanger sections.</li>
+            <li>Sponsor visibility, fundraising, announcements, and media.</li>
+            <li>Recruiting-style player stories and weekly team recaps.</li>
+          </ul>
+        </article>
+        <article class="admin-browser">
+          <div class="browser-top">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <div>Admin Panel</div>
+          </div>
+          <div class="browser-body">
+            <div class="admin-row"><div><strong>Roster</strong><br><span>Player cards, positions, photos, numbers</span></div><div class="toggle">Publish</div></div>
+            <div class="admin-row"><div><strong>Schedule</strong><br><span>GameChanger, NCS, manual updates</span></div><div class="toggle">Sync</div></div>
+            <div class="admin-row"><div><strong>Sponsors</strong><br><span>Logos, tiers, clicks, campaigns</span></div><div class="toggle">Track</div></div>
+            <div class="admin-row"><div><strong>RallyIQ</strong><br><span>Recaps, stories, player summaries</span></div><div class="toggle">Create</div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">Product direction</div>
+      <h2 class="section-title">Build it as a portal, not just a webpage.</h2>
+      <div class="timeline">
+        <article><span>1</span><div><h3>Branded Team Portal</h3><p>Every team gets a polished public front door: one link for parents, players, sponsors, family, coaches, and fans.</p></div></article>
+        <article><span>2</span><div><h3>Admin Content Manager</h3><p>Coaches or parent admins update roster, schedule, announcements, sponsors, media, fundraising, and player details once.</p></div></article>
+        <article><span>3</span><div><h3>Integration + Import Layer</h3><p>Pull, import, or deep-link GameChanger schedules, stat exports, NCS events, Google Sheets, social content, and payment/fundraising links.</p></div></article>
+        <article><span>4</span><div><h3>RallyIQ Story Engine</h3><p>Turn existing team activity into weekly recaps, player spotlights, sponsor updates, recruiting-style blurbs, and parent-friendly summaries.</p></div></article>
+        <article><span>5</span><div><h3>Club + Multi-Team OS</h3><p>Scale from one team site into a club system with multiple teams, shared sponsors, common branding, and per-team admin permissions.</p></div></article>
+      </div>
+    </section>
+
+    <section id="pitch">
+      <div class="panel card">
+        <div class="eyebrow">How to say it</div>
+        <h2 class="section-title">The pitch</h2>
+        <p style="font-size:24px;line-height:1.45;color:#596579;font-weight:750">“Teams are not lacking tools. They are buried in them. NextGen gives each team one branded portal and one admin panel, while pulling in the schedule, stats, video, tournament, sponsor, and communication data from the tools they already use. Families get one trusted link. Coaches answer fewer repeat questions. Players and sponsors get better visibility.”</p>
+        <div class="buttons">
+          <a class="btn primary" href="index.html">Back to main page</a>
+          <a class="btn white" href="product.html">Product visual</a>
+          <a class="btn white" href="bala-nextgen-roadmap.html">Bala roadmap</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    NextGen Team Sites · Team operations story page · One branded portal for modern youth sports teams
+  </footer>
+</body>
+</html>
