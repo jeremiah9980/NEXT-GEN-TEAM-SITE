@@ -1,0 +1,105 @@
+name: Cloudflare DNS
+
+on:
+  workflow_dispatch:
+    inputs:
+      domain:
+        description: "Root domain to configure"
+        required: true
+        default: "next-gen-team.site"
+      github_pages_host:
+        description: "GitHub Pages host for www CNAME"
+        required: true
+        default: "jeremiah9980.github.io"
+      proxied:
+        description: "Proxy records through Cloudflare"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+jobs:
+  apply-dns:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+      DOMAIN: ${{ inputs.domain }}
+      GITHUB_PAGES_HOST: ${{ inputs.github_pages_host }}
+      PROXIED: ${{ inputs.proxied }}
+    steps:
+      - name: Validate required secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${CF_API_TOKEN:-}" ]; then
+            echo "Missing repo secret: CF_API_TOKEN"
+            exit 1
+          fi
+          if [ -z "${CF_ZONE_ID:-}" ]; then
+            echo "Missing repo secret: CF_ZONE_ID"
+            exit 1
+          fi
+
+      - name: Upsert GitHub Pages DNS records in Cloudflare
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          API="https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/dns_records"
+          AUTH=(-H "Authorization: Bearer ${CF_API_TOKEN}" -H "Content-Type: application/json")
+
+          upsert_record () {
+            local type="$1"
+            local name="$2"
+            local content="$3"
+            local proxied="$4"
+
+            echo "Applying ${type} ${name} -> ${content} proxied=${proxied}"
+
+            record_id=$(curl -sS -X GET "${API}?type=${type}&name=${name}" "${AUTH[@]}" | jq -r '.result[0].id // empty')
+            payload=$(jq -n \
+              --arg type "$type" \
+              --arg name "$name" \
+              --arg content "$content" \
+              --argjson proxied "$proxied" \
+              '{type:$type,name:$name,content:$content,ttl:1,proxied:$proxied}')
+
+            if [ -n "$record_id" ]; then
+              curl -sS -X PUT "${API}/${record_id}" "${AUTH[@]}" --data "$payload" | jq -e '.success == true' >/dev/null
+            else
+              curl -sS -X POST "${API}" "${AUTH[@]}" --data "$payload" | jq -e '.success == true' >/dev/null
+            fi
+          }
+
+          case "$PROXIED" in
+            true|false) ;;
+            *) echo "proxied must be true or false"; exit 1 ;;
+          esac
+
+          # GitHub Pages apex records
+          upsert_record "A" "$DOMAIN" "185.199.108.153" "$PROXIED"
+          upsert_record "A" "$DOMAIN" "185.199.109.153" "$PROXIED"
+          upsert_record "A" "$DOMAIN" "185.199.110.153" "$PROXIED"
+          upsert_record "A" "$DOMAIN" "185.199.111.153" "$PROXIED"
+
+          # www record
+          upsert_record "CNAME" "www.${DOMAIN}" "$GITHUB_PAGES_HOST" "$PROXIED"
+
+          echo "Cloudflare DNS records applied for ${DOMAIN}."
+
+      - name: Confirm resulting records
+        shell: bash
+        run: |
+          set -euo pipefail
+          API="https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/dns_records"
+          curl -sS -X GET "${API}?name=${DOMAIN}" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" | jq '.result[] | {type,name,content,proxied}'
+          curl -sS -X GET "${API}?name=www.${DOMAIN}" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" | jq '.result[] | {type,name,content,proxied}'
