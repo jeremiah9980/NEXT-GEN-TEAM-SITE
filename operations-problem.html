@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Softball Operations Problem | Next Gen Team Site</title>
+  <meta name="description" content="A visual explanation of the softball operations problem: one coach, two teams, tournament platforms, GameChanger, BAND, and nonstop schedule and uniform questions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#050508;--panel:#0d0b13;--panel2:#151020;--lime:#d7ff22;--purple:#7d3cff;--violet:#3b1f63;--white:#f8f7ef;--muted:#b8b4c5;--orange:#ff7a1a;--line:rgba(215,255,34,.7)}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 5%,rgba(125,60,255,.22),transparent 28rem),radial-gradient(circle at 8% 10%,rgba(215,255,34,.12),transparent 22rem),var(--bg);color:var(--white);font-family:Inter,system-ui,sans-serif}.wrap{max-width:1500px;margin:auto;padding:34px 28px 48px}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;border-bottom:2px solid rgba(125,60,255,.55);padding-bottom:18px}.kicker{font-size:14px;text-transform:uppercase;letter-spacing:.22em;color:var(--lime);font-weight:900}.title{font-family:Anton,Impact,sans-serif;font-size:clamp(54px,8vw,112px);line-height:.9;margin:10px 0 8px;letter-spacing:.015em;text-transform:uppercase}.title span{display:block;color:var(--lime)}.subtitle{font-size:clamp(18px,2vw,28px);font-weight:800;color:#fff;margin:0}.logo{border:2px solid rgba(125,60,255,.65);border-radius:22px;padding:18px 24px;text-align:center;background:linear-gradient(135deg,rgba(125,60,255,.28),rgba(0,0,0,.35));box-shadow:0 0 50px rgba(125,60,255,.25)}.logo .snake{font-size:48px}.logo strong{font-family:Anton,sans-serif;font-size:46px;display:block;color:#fff;text-shadow:0 0 14px rgba(125,60,255,.75)}.logo small{color:var(--lime);font-weight:900;letter-spacing:.2em}.grid{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;margin-top:24px}.panel{border:2px solid rgba(125,60,255,.55);border-radius:24px;background:linear-gradient(180deg,rgba(20,14,31,.95),rgba(7,7,11,.96));box-shadow:0 24px 70px rgba(0,0,0,.38);padding:22px}.section-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}.num{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--purple),#2e184d);display:grid;place-items:center;font-family:Anton,sans-serif;font-size:28px}.section-head h2{margin:0;font-family:Anton,sans-serif;text-transform:uppercase;font-size:34px;letter-spacing:.03em}.teams{display:grid;grid-template-columns:1fr 220px 1fr;gap:18px;align-items:center}.team-card{border:2px solid rgba(125,60,255,.6);border-radius:18px;background:#09080f;padding:16px}.team-card h3{font-family:Anton,sans-serif;font-size:34px;margin:0 0 10px;text-transform:uppercase}.team-card h3 span{color:var(--lime)}.icons{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:10px 0}.person{height:24px;border-radius:50% 50% 8px 8px;background:var(--purple);position:relative}.person:before{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:inherit;left:50%;transform:translateX(-50%);top:-8px}.family .person{background:var(--lime)}.coach{position:relative;text-align:center}.coach-badge{width:190px;height:190px;border:6px solid var(--lime);border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.16),rgba(125,60,255,.25)),#111;margin:auto;box-shadow:0 0 40px rgba(215,255,34,.35)}.coach-figure{font-size:76px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.55))}.coach-label{display:inline-block;margin-top:-18px;padding:10px 24px;border:2px solid var(--lime);border-radius:12px;background:#070707;color:var(--lime);font-family:Anton,sans-serif;font-size:28px}.bubble{position:absolute;background:#fff;color:#111;border-radius:999px;padding:12px 15px;font-weight:900;font-size:13px;line-height:1.05;border:3px solid var(--purple);box-shadow:0 8px 20px rgba(0,0,0,.3)}.b1{left:-110px;top:8px}.b2{left:-100px;top:78px}.b3{left:-105px;top:148px}.b4{right:-105px;top:8px}.b5{right:-105px;top:78px}.b6{right:-105px;top:148px}.b7{left:50%;transform:translateX(-50%);bottom:-60px}.takeaway{margin-top:28px;padding:16px;border:2px solid var(--lime);border-radius:16px;background:rgba(215,255,34,.07);font-size:25px;font-weight:900}.takeaway span{color:var(--lime)}.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;align-items:stretch}.step{position:relative;text-align:center;border:1px solid rgba(255,255,255,.18);border-radius:18px;background:#0b0b10;padding:16px 10px;min-height:156px}.step:after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--lime);font-size:34px;font-weight:900}.step:last-child:after{display:none}.step b{display:grid;place-items:center;width:32px;height:32px;margin:0 auto 8px;border-radius:50%;background:var(--lime);color:#090909;font-weight:900}.step .ico{font-size:42px;margin:8px 0}.step h3{font-size:15px;margin:0;color:#fff}.brandbox{font-weight:900;font-size:22px;color:#123;background:#fff;border-radius:8px;padding:8px;margin:5px}.brandbox small{display:block;color:#82a000}.breaks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.pain{border:2px solid var(--orange);border-radius:16px;background:#0d0d10;padding:14px;min-height:150px}.pain .ico{font-size:34px}.pain h3{margin:6px 0;font-size:16px}.pain p{margin:0;color:var(--muted);font-size:13px;line-height:1.35}.equation{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:2px solid var(--lime);border-radius:18px;margin-top:18px;padding:14px;font-family:Anton,sans-serif;text-transform:uppercase;font-size:24px}.equation span{color:var(--lime)}.solution{position:sticky;top:20px}.solution h2{font-family:Anton,sans-serif;font-size:48px;text-transform:uppercase;line-height:1;margin:0 0 16px}.solution h2 span{display:block;color:var(--lime)}.arrow-callout{display:flex;align-items:center;gap:14px;margin:12px 0 20px;color:#fff;font-weight:900}.arrow{font-size:82px;color:var(--lime);line-height:1}.site{background:#f4f7fb;color:#081325;border-radius:24px;overflow:hidden;border:3px solid rgba(255,255,255,.2);box-shadow:0 30px 80px rgba(0,0,0,.48)}.browser{height:42px;background:#e8edf5;display:flex;align-items:center;gap:7px;padding:0 16px}.dot{width:10px;height:10px;border-radius:50%;background:#b7c0ce}.site-inner{padding:28px}.nav{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.brand{display:flex;align-items:center;gap:9px}.mark{width:36px;height:36px;border-radius:12px;background:#ffc329;display:grid;place-items:center;color:#111;font-weight:900}.hero-site{display:grid;grid-template-columns:1fr 130px;gap:10px;align-items:center;padding:26px 0}.hero-site h3{font-family:Anton,sans-serif;font-size:44px;line-height:.95;margin:0}.hero-site p{font-weight:700;color:#415064}.ball{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 25% 25%,#fff,#d8d0bd);position:relative;opacity:.92}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.card{border:1px solid #dce4ef;border-radius:16px;padding:14px;background:#fff;min-height:110px}.card strong{display:block;font-size:13px;text-transform:uppercase}.card p{margin:8px 0 0;color:#4e5f74;font-size:12px;font-weight:700}.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}.tile{background:#fff;border:1px solid #dce4ef;border-radius:14px;padding:10px;text-align:center;font-size:11px;font-weight:900}.single{margin-top:16px;border:2px solid var(--lime);border-radius:18px;padding:14px;background:#0a0b0f;color:#fff;font-weight:900}.single span{color:var(--lime)}.footer{margin-top:24px;padding:18px 22px;border-radius:18px;background:linear-gradient(90deg,rgba(255,255,255,.05),rgba(215,255,34,.06));font-family:Anton,sans-serif;font-size:35px;text-transform:uppercase}.footer span{color:var(--lime)}.toplink{display:inline-block;color:#111;background:var(--lime);font-weight:900;padding:10px 14px;border-radius:999px;text-decoration:none;margin-top:18px}.mobile-note{display:none}@media(max-width:1100px){.grid{grid-template-columns:1fr}.solution{position:static}.teams{grid-template-columns:1fr}.bubble{position:static;display:inline-block;margin:6px}.flow,.breaks{grid-template-columns:1fr 1fr}.step:after{display:none}.cards,.tiles{grid-template-columns:1fr}.top{display:block}.logo{margin-top:16px}}@media(max-width:650px){.wrap{padding:22px 14px}.flow,.breaks{grid-template-columns:1fr}.title{font-size:52px}.section-head h2{font-size:27px}.footer{font-size:26px}.hero-site{grid-template-columns:1fr}.ball{display:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <div class="kicker">Next Gen Team Sites · operations explainer</div>
+        <h1 class="title">The Softball <span>Operations Problem</span></h1>
+        <p class="subtitle">One coach. Two teams. Multiple systems. Constant communication overload.</p>
+        <a class="toplink" href="index.html">← Back to NextGen Team Sites</a>
+      </div>
+      <div class="logo"><div class="snake">🐍</div><small>TEXAS</small><strong>VENOM</strong></div>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section class="panel">
+          <div class="section-head"><div class="num">1</div><h2>Coach Communication Overload</h2></div>
+          <div class="teams">
+            <article class="team-card"><h3>Texas Venom <span>12U</span></h3><strong>10–12 Players</strong><div class="icons"> <i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i></div><strong>2–4 Family Members Each</strong><div class="icons family"><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i></div></article>
+            <div class="coach"><div class="bubble b1">What<br>uniform?</div><div class="bubble b2">What<br>time?</div><div class="bubble b3">Which<br>field?</div><div class="bubble b4">Game or<br>practice?</div><div class="bubble b5">Arrival<br>time?</div><div class="bubble b6">Home or<br>away?</div><div class="bubble b7">Need socks<br>or jersey?</div><div class="coach-badge"><div class="coach-figure">👨‍🏫</div></div><div class="coach-label">ONE COACH</div></div>
+            <article class="team-card"><h3>Texas Venom <span>14U</span></h3><strong>10–12 Players</strong><div class="icons"> <i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i></div><strong>2–4 Family Members Each</strong><div class="icons family"><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i><i class="person"></i></div></article>
+          </div>
+          <div class="takeaway"><span>20–24 players</span> + <span>40–96 family members</span> = nonstop schedule and uniform questions</div>
+        </section>
+
+        <section class="panel" style="margin-top:24px">
+          <div class="section-head"><div class="num">2</div><h2>Tournament Registration & Data Flow</h2></div>
+          <div class="flow">
+            <div class="step"><b>1</b><div class="ico">✅</div><h3>Coach registers for tournaments</h3></div>
+            <div class="step"><b>2</b><div class="brandbox">USSSA<small>FASTPITCH</small></div><div class="brandbox">NCS<small>FASTPITCH</small></div><h3>Tournament organizations</h3></div>
+            <div class="step"><b>3</b><div class="ico">📅</div><h3>Tournament events</h3></div>
+            <div class="step"><b>4</b><div class="ico">📍</div><h3>Games, dates, times, and field assignments</h3></div>
+            <div class="step"><b>5</b><div class="ico">GC</div><h3>Manual entry or automation into GameChanger</h3></div>
+            <div class="step"><b>6</b><div class="ico">💬</div><h3>Family communication through BAND</h3></div>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:24px">
+          <div class="section-head"><div class="num">3</div><h2>Where Things Break Down</h2></div>
+          <div class="breaks">
+            <div class="pain"><div class="ico">🗄️</div><h3>Information lives in too many places</h3><p>Coaches and families search across multiple systems.</p></div>
+            <div class="pain"><div class="ico">🔄</div><h3>Tournament data changes frequently</h3><p>Updates, cancellations, and brackets change at the last minute.</p></div>
+            <div class="pain"><div class="ico">⌨️</div><h3>Schedules must be entered more than once</h3><p>Manual re-entry wastes time and creates room for errors.</p></div>
+            <div class="pain"><div class="ico">💬</div><h3>Families ask the same questions repeatedly</h3><p>The same questions come in over and over again.</p></div>
+            <div class="pain"><div class="ico">👕</div><h3>Uniform guidance is hard to keep consistent</h3><p>Sizing, colors, and requirements are constantly clarified.</p></div>
+            <div class="pain"><div class="ico">✖2</div><h3>Two teams doubles the coordination load</h3><p>Twice the rosters. Twice the schedules. Twice the questions.</p></div>
+            <div class="pain"><div class="ico">🗺️</div><h3>Game details get missed</h3><p>Arrival times and field info can get lost in the noise.</p></div>
+            <div class="pain"><div class="ico">📁</div><h3>No single source of truth for families</h3><p>Families do not know where to find the latest, correct info.</p></div>
+          </div>
+          <div class="equation"><span>Tournament platforms</span> + schedule changes + manual entry + <span>two teams</span> + many families = <span>communication chaos</span></div>
+        </section>
+      </main>
+
+      <aside class="solution">
+        <section class="panel">
+          <h2>The Solution: <span>One Link. One Team Hub.</span></h2>
+          <div class="arrow-callout"><div class="arrow">➜</div><div>Coach sends families<br><span style="color:var(--lime)">to the team site</span></div></div>
+          <div class="site">
+            <div class="browser"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+            <div class="site-inner">
+              <div class="nav"><div class="brand"><span class="mark">NG</span><span>NextGen<br>Team Hub</span></div><span>Home · Schedule · Roster · Dashboard</span></div>
+              <div class="hero-site"><div><p class="kicker" style="color:#1268d3;letter-spacing:.14em">Built by a softball dad in Georgetown, TX</p><h3>One link. One team hub. A pro-level digital home.</h3><p>Families get schedules, uniforms, game times, field info, updates, and more.</p></div><div class="ball"></div></div>
+              <div class="cards"><div class="card"><strong>Next Game</strong><p>Texas Venom 12U vs. Austin Blaze<br>Field 2 · 10:00 AM</p></div><div class="card"><strong>Upcoming Events</strong><p>Practice, games, picture day, tournament weekends.</p></div><div class="card"><strong>Announcements</strong><p>Uniform pickup, arrival notes, roster updates.</p></div></div>
+              <div class="tiles"><div class="tile">Roster</div><div class="tile">Uniforms</div><div class="tile">Venue Info</div><div class="tile">Documents</div><div class="tile">Contacts</div></div>
+            </div>
+          </div>
+          <div class="single">✅ <span>Single source</span> for schedules, uniforms, game times, field info, and updates.</div>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="footer">The coach is forced to act as <span>scheduler, communicator, help desk,</span> and <span>operations manager.</span></footer>
+  </div>
+</body>
+</html>
